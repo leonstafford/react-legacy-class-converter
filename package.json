@@ -1,0 +1,31 @@
+{
+  "name": "react-class-converter",
+  "displayName": "React Class Converter",
+  "description": "Convert React.createClass components to ES6 classes",
+  "version": "1.0.0",
+  "publisher": "Your Name",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/react-class-converter.git"
+  },
+  "engines": {
+    "vscode": "^1.59.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:convertReactClass"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "convertReactClass",
+        "title": "Convert React.createClass Component"
+      }
+    ]
+  },
+  "dependencies": {
+    "vscode": "^1.59.0"
+  }
+}
