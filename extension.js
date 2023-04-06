@@ -1,5 +1,5 @@
 import { vscode } from require('vscode');
-import { convertReactClassToComponent } from './convert-react-class-to-component';
+import { convertReactClassToComponent } from '../src/convert-react-class-to-component';
 
 function activate(context) {
 

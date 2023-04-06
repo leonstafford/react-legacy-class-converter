@@ -1,4 +1,4 @@
-import { convertReactClassToComponent } from './convert-react-class-to-component';
+import { convertReactClassToComponent } from '../src/convert-react-class-to-component';
 
 describe('convertReactClassToComponent', () => {
   it('should convert createReactClass to class extends React.Component', () => {
