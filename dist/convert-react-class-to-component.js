@@ -5,22 +5,11 @@ export const convertLegacyReactClassToComponent = sourceCode => {
   // Replace the propTypes section with static propTypes
   convertedText = convertedText.replace(/propTypes:\s*{/, 'static propTypes = {');
 
-  // Replace function declarations with arrow functions
-  convertedText = convertedText.replace(/(\w+)\s*:\s*function\s*\(/g, '$1 = (');
+  // Replace render: function with render()
+  convertedText = convertedText.replace(/render:\s*function\s*\(\)/g, 'render()');
 
-  // Replace this keyword with this.state
-  convertedText = convertedText.replace(/this\.(props|state)\./g, 'this.');
-
-  // Replace createReactClass with React.Component
-  convertedText = convertedText.replace(/createReactClass\({/g, 'Component {');
-
-  // Add the render method if it's missing
-  if (!convertedText.includes('render()')) {
-    convertedText += '\n  render() {\n    return null;\n  }\n';
-  }
-
-  // Replace this.state with this
-  convertedText = convertedText.replace(/this\.state\./g, 'this.');
+  // Replace the ending } with };
+  convertedText = convertedText.replace(/(\s*)\}\s*\);(\s*)/g, '$1}$2');
 
   // Replace refs with React.createRef()
   convertedText = convertedText.replace(/React\.createRef\(\)/g, 'createRef()');
@@ -33,9 +22,6 @@ export const convertLegacyReactClassToComponent = sourceCode => {
 
   // Replace getDefaultProps with a default value for static defaultProps
   convertedText = convertedText.replace(/getDefaultProps\(\)\s*{\s*return\s*{([\s\S]*?)\s*};\s*}/gm, 'static defaultProps = {$1};');
-
-  // Replace propTypes with a default value for static propTypes
-  convertedText = convertedText.replace(/propTypes:\s*{([\s\S]*?)}/gm, 'static propTypes = {$1};');
 
   // Replace getInitialState with a constructor that initializes state
   convertedText = convertedText.replace(/getInitialState\(\)\s*{\s*return\s*{([\s\S]*?)\s*};\s*}/gm, 'constructor(props) {\n    super(props);\n    this.state = {$1};\n  }');
