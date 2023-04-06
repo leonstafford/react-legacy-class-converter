@@ -30,12 +30,14 @@
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
+    "babel-cli": "^6.26.0",
     "babel-jest": "^29.5.0",
     "jest": "^27.2.3",
     "uglify-js": "^3.17.4"
   },
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "dist": "mkdir -p dist && babel src --out-dir dist --copy-files && uglifyjs dist/*.js -c -m --output dist/main.min.js"
+    "dist": "mkdir -p dist && babel src --out-dir dist --copy-files && uglifyjs dist/*.js -c -m --output dist/extension.js",
+    "package": "vsce package"
   }
 }
