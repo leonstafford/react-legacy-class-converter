@@ -1,4 +1,4 @@
-export const convertReactClassToComponent = sourceCode => {
+export const convertLegacyReactClassToComponent = sourceCode => {
   // Replace createReactClass with React.Component
   let convertedText = sourceCode.replace(/var\s+(\w+)\s+=\s+createReactClass\({/g, 'class $1 extends React.Component {');
 
